@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私の最近の夢中？思い出を整理する小さな宝物 🌸✨ - PhotoGlobe Sorter</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+
+        :root {
+            --sakura: #ffb7c5;
+            --sakura-dark: #ff9eb7;
+            --cream: #faf7f2;
+            --charcoal: #2c2c2c;
+            --sage: #b8c5b0;
+            --gold: #d4af37;
+            --light: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.9;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            background: var(--light);
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(184, 197, 176, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--charcoal);
+            text-transform: uppercase;
+        }
+
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            letter-spacing: 1px;
+        }
+
+        .hero-author {
+            font-size: 0.95rem;
+            color: #888;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--sakura);
+            margin: 3rem auto;
+        }
+
+        .content-section {
+            background: var(--light);
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .content-section strong {
+            font-weight: 500;
+            color: var(--sakura-dark);
+        }
+
+        .price-zen {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            background: linear-gradient(135deg, var(--sakura) 0%, var(--sakura-dark) 100%);
+            border-radius: 2px;
+            color: white;
+        }
+
+        .price-zen .price {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+        }
+
+        .price-zen .price-sub {
+            font-size: 1.125rem;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 1px;
+        }
+
+        .features-elegant {
+            margin: 4rem 0;
+        }
+
+        .feature-item {
+            background: var(--light);
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--sakura);
+            transition: all 0.4s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 20px rgba(255, 183, 197, 0.15);
+        }
+
+        .feature-number {
+            font-size: 0.875rem;
+            color: var(--sakura-dark);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .feature-item p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #555;
+            font-weight: 300;
+        }
+
+        .japanese-pride {
+            background: var(--sage);
+            color: white;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        .japanese-pride h3 {
+            font-size: 1.75rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .japanese-pride p {
+            font-size: 1.125rem;
+            line-height: 2;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .japanese-example {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 2px;
+            margin-top: 1rem;
+            font-family: 'Noto Sans JP', monospace;
+            font-size: 1.125rem;
+            letter-spacing: 1px;
+        }
+
+        .pdf-beauty {
+            background: var(--light);
+            padding: 3rem;
+            margin: 4rem 0;
+            border-top: 1px solid var(--sakura);
+            border-bottom: 1px solid var(--sakura);
+        }
+
+        .pdf-beauty h3 {
+            font-size: 1.75rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .stats-minimal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--sakura-dark);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .label {
+            font-size: 0.875rem;
+            color: #888;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .quote-beautiful {
+            text-align: center;
+            font-size: 1.25rem;
+            line-height: 2;
+            font-weight: 300;
+            color: #555;
+            font-style: italic;
+            margin: 3rem 0;
+            padding: 0 2rem;
+        }
+
+        .cta-minimal {
+            text-align: center;
+            padding: 5rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .cta-minimal h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .btn-elegant {
+            display: inline-block;
+            background: var(--charcoal);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 400;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--charcoal);
+        }
+
+        .btn-elegant:hover {
+            background: transparent;
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .trial-note-minimal {
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: #888;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(184, 197, 176, 0.2);
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.8125rem;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: var(--sakura-dark);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--sakura);
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.125rem;
+            color: var(--sakura-dark);
+            margin: 3rem 0;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .hero { padding: 3rem 0 2rem; }
+            .content-section { padding: 2rem; }
+            .feature-item { padding: 2rem; }
+            .stats-minimal { grid-template-columns: 1fr; gap: 1.5rem; }
+            .price-zen .price { font-size: 2.5rem; }
+            .cta-minimal { padding: 3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">PhotoGlobe Sorter</div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-icon">🌸</div>
+            <h1>私の最近の夢中？<br>思い出を整理する小さな宝物</h1>
+            <div class="divider"></div>
+            <p class="hero-author">— Miuky より</p>
+        </section>
+
+        <section class="content-section">
+            <p>皆さん、こんにちは！</p>
+            <p>私のこと知ってる方はご存知だと思いますが、私はちょっと（かなり）整理整頓マニアです。家は「綺麗」でなければならないし、旅行ノートは完璧じゃないとダメ...でもパソコンは？<strong>大惨事でした</strong>。</p>
+            <p>旅行の写真（京都、バリ、パリ...）や日本の家族の写真が何千枚もあって、全部名前のないフォルダに混ざってる。何も見つけられない。デジタルな「禅」はゼロでした！</p>
+            <p>そして、素晴らしいものを見つけました：<strong>PhotoGlobe Sorter</strong>。</p>
+            <p>本当に、まるで私のために作られたみたい。あなたを監視する冷たい大きなクラウドは忘れてください。このソフトウェアはその真逆：<strong>100%ローカル</strong>です。私の写真は私の家に、私の小さなデジタル秘密の庭に留まります。誰もスキャンしないし、誰も使いません。</p>
+        </section>
+
+        <div class="price-zen">
+            <div class="price">¥5,900</div>
+            <div class="price-sub">一度だけ。一生使える。</div>
+        </div>
+
+        <section class="content-section">
+            <p>サブスクリプションじゃない！職人さんから素敵な陶器を買うみたい：一生大切にできるものに一度だけお金を払う。この哲学、大好きです。</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="features-elegant">
+            <div class="feature-item">
+                <div class="feature-number">01</div>
+                <h3>「弁当箱」のような整理</h3>
+                <p>最も可愛らしいこと！「構造ビルダー」があります。ゲームみたい：小さな「ブロック」（年、月、国、都市...）を取って、スライドさせて、完璧な収納ボックスを作ります。とても満足感があります！</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-number">02</div>
+                <h3>日本語が理解できる！（他49言語も！）</h3>
+                <p>これが私の心の叫び。「京都」を ????? や äº¬éƒ½å¸‚ に変えるソフトウェアにうんざりでした。このソフトウェアは完璧。エラーなしでフォルダを作成してくれます。</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-number">03</div>
+                <h3>PDFレポートは、私の新しい旅行日記！</h3>
+                <p>整理が終わったら（テスト用の620枚の写真を6分で！）、「終わりました」と言うだけじゃない。37ページのPDFレポートを作ってくれました。</p>
+            </div>
+        </section>
+
+        <div class="japanese-pride">
+            <h3>日本語への敬意</h3>
+            <p>私のフォルダを完璧に作成してくれました</p>
+            <div class="japanese-example">.../日本/京都府/京都市</div>
+            <p style="margin-top: 1.5rem;">一つのエラーもなく。私の言語、私のルーツを尊重してくれる。<br>これが最高の品質の証です。</p>
+        </div>
+
+        <div class="pdf-beauty">
+            <h3>魔法のような瞬間</h3>
+            <div class="stats-minimal">
+                <div class="stat-item">
+                    <span class="number">620</span>
+                    <span class="label">テスト写真</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">6分</span>
+                    <span class="label">整理時間</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">37</span>
+                    <span class="label">ページレポート</span>
+                </div>
+            </div>
+            <p class="quote-beautiful">美しいヒートマップで、毎年どこに最も旅行したかを示してくれます。カメラのグラフ、旅行のタイムライン...まるで思い出の日記のよう。</p>
+        </div>
+
+        <section class="content-section">
+            <p>¥5,900で、デジタルな安らぎを取り戻しました。何千もの思い出がついに整理され、安全に保管され、美しいレポートで再発見できます。</p>
+            <p><strong>美しいもの、丁寧に作られたものが好きで、思い出を守りたいなら...ぜひ！</strong></p>
+            <div class="signature">— Miuky 🌸</div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="cta-minimal">
+            <h2>あなたの思い出を整理しませんか？</h2>
+            <a href="https://www.albumforge.com/photoglobe-sorter/download/" class="btn-elegant">
+                ダウンロード
+            </a>
+            <p class="trial-note-minimal">✨ 無料トライアル：500枚の写真 • クレジットカード不要</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AlbumForge | PhotoGlobe Sorter. All rights reserved.<br>
+            <a href="https://www.albumforge.com/PhotoGlobe_Sorter">公式ウェブサイト</a> | 
+            <a href="mailto:support@albumforge.com">サポート</a>
+            <a href="index.html">Home</a>
+        </p>
+    </footer>
+</body>
+</html>

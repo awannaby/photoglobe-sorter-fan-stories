@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seriously, Stop Everything: I Found THE Photo Solution!</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --orange: #ff6b35;
+            --blue: #004e89;
+            --yellow: #ffc845;
+            --dark: #1a1a1a;
+            --light: #f7f7f7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--orange), #e63946);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '💎';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: -50px;
+            right: -50px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-sub {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .container-custom {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .intro-section {
+            background: white;
+            margin: -50px auto 2rem;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 10;
+        }
+
+        .intro-section p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-section strong {
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        .price-bomb {
+            background: linear-gradient(135deg, var(--yellow), #ffb703);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(255,183,3,0.3);
+            position: relative;
+        }
+
+        .price-bomb::before {
+            content: '💣';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+        }
+
+        .price-bomb h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-top: 1rem;
+        }
+
+        .price-bomb p {
+            font-size: 1.25rem;
+            margin: 0.5rem 0 0 0;
+            color: #333;
+        }
+
+        .feature-list {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .feature-list h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--blue);
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 4px solid var(--orange);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(255,107,53,0.2);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .wow-section {
+            background: linear-gradient(135deg, var(--blue), #003d71);
+            color: white;
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .wow-section h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .wow-section p {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box .label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .geek-note {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .geek-note h3 {
+            color: #856404;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .geek-note p {
+            color: #856404;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .geek-note strong {
+            background: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .summary {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--orange);
+        }
+
+        .summary h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .summary p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #e63946, var(--orange));
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0 4rem;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.25rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-massive {
+            display: inline-block;
+            background: white;
+            color: var(--orange);
+            padding: 1.5rem 3rem;
+            border-radius: 50px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .btn-massive:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            color: var(--orange);
+        }
+
+        .trial-note {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 2rem 1rem; }
+            .intro-section { padding: 1.5rem; margin-top: -30px; }
+            .price-bomb { padding: 2rem 1rem; }
+            .feature-list { padding: 1.5rem; }
+            .wow-section { padding: 2rem 1.5rem; }
+            .summary { padding: 2rem 1.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="container-custom">
+            <h1>Seriously, Stop Everything!</h1>
+            <p class="hero-sub">I Found THE Solution for Our Photos</p>
+            <span class="hero-tag">📸 Real User Review • No BS</span>
+        </div>
+    </div>
+
+    <div class="container-custom">
+        <div class="intro-section">
+            <p><strong>Guys, I gotta tell you about this.</strong> We all have the same problem: thousands of photos scattered across our hard drives, folders named "Vacation 2024", "Phone Transfer", "Photos_to_sort" (that never get sorted)... We tell ourselves we'll use Google Photos, but we know they read everything, and subscriptions are getting expensive.</p>
+            
+            <p>I found the solution. It's called <strong>PhotoGlobe Sorter</strong> and it's a genuine "artisan unicorn".</p>
+        </div>
+
+        <div class="price-bomb">
+            <h2>$39. That's it.</h2>
+            <p><strong>Not per month. Once. For life.</strong></p>
+        </div>
+
+        <div class="feature-list">
+            <h3>I was skeptical, but I tested it. Here's what it does:</h3>
+            
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-content">
+                    <h4>100% OFFLINE</h4>
+                    <p>You install it, you can disconnect from the internet if you want. Your photos never leave your PC. Zero cloud, zero spying.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <div class="feature-content">
+                    <h4>THE MAGIC SORT</h4>
+                    <p>You give it your "messy" folder, tell it where you want the sorted photos (e.g., C:/Photos) and you click "Start".</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-content">
+                    <h4>CUSTOM STRUCTURE BUILDER</h4>
+                    <p>This is where it's genius. Want to sort by Year → Country → City? Or by Camera → Year? There's a "Structure Builder" with blocks, you drag-and-drop to create your own sorting rule. It's simple and ultra-powerful.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="wow-section">
+            <h2>But the thing that made me fall off my chair...</h2>
+            <p><strong>...is the PDF report.</strong></p>
+            <p>When it's done, it doesn't just say "All set". It generates a 37-page analysis report on YOUR OWN MEMORIES.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="number">620</span>
+                    <span class="label">Photos tested</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">6 min</span>
+                    <span class="label">Total sorting time</span>
+                </div>
+                <div class="stat-box">
+                    <span class="number">1.5/sec</span>
+                    <span class="label">Photos per second</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem;">It gave me stats on my cameras (my old Canon and my iPhone).</p>
+            <p>It generated "Heatmaps" of all my travels, year by year.</p>
+            <p>It created a timeline of my trips, month by month, to see where I was when.</p>
+            <p><strong>It's like "Spotify Wrapped" but for your life, and 100% private.</strong></p>
+        </div>
+
+        <div class="geek-note">
+            <h3>🤓 The "Geek Detail" That Proves This is Solid</h3>
+            <p>You know we have photos from our trips to Japan, Russia, etc.? This software is the <strong>only one I've seen that handles UTF-8 perfectly</strong>. Meaning it'll create folders like <strong>.../Japan/京都市 (Kyoto)</strong> without ever messing up or creating ??????.jpg files.</p>
+            <p>It handles <strong>50 languages</strong>, and I even saw a screenshot where the entire interface is in Bengali! This is professional work.</p>
+        </div>
+
+        <div class="summary">
+            <h2>In Summary:</h2>
+            <p>For the price of a dinner out, you get a lifetime software that solves one of our biggest digital problems, respects your privacy, and on top of that, gives you an incredible analysis of your own memories.</p>
+            <p><strong>Honestly, go for it.</strong> You can even try it for free (limited to 500 photos).</p>
+            <p style="font-size: 1.5rem; color: var(--orange); font-weight: 900;">Best $39 I spent this year.</p>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Take Control?</h2>
+            <p>Download PhotoGlobe Sorter now and start organizing your memories</p>
+            <a href="index.html" class="btn-massive">
+                <i class="fas fa-download"></i> Download Now
+            </a>
+            <p class="trial-note">✨ Free trial: 500 photos • No credit card required</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AlbumForge | PhotoGlobe Sorter. All rights reserved. | 
+            <a href="https://www.albumforge.com/PhotoGlobe_Sorter">Official Website</a> | 
+            <a href="mailto:support@albumforge.com">Support</a>
+        </p>
+    </footer>
+</body>
+</html>

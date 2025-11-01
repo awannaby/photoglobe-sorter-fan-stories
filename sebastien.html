@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photo Workflow Was Broken. It Was Missing Step 1. | PhotoGlobe Sorter</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --dark-bg: #111827;
+            --darker: #0a0f1a;
+            --accent-blue: #00AFFF;
+            --success-green: #22c55e;
+            --text-light: #E5E7EB;
+            --text-muted: #6B7280;
+            --card-bg: #1f2937;
+            --border: #374151;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .top-bar {
+            background: var(--darker);
+            border-bottom: 2px solid var(--accent-blue);
+            padding: 0.75rem 0;
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-blue);
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tag {
+            background: var(--accent-blue);
+            color: var(--darker);
+            padding: 0.375rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            padding: 4rem 0 3rem;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(0, 175, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--accent-blue);
+        }
+
+        .hero-meta {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-author {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .problem-section {
+            background: var(--card-bg);
+            border-left: 4px solid #ef4444;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-radius: 4px;
+        }
+
+        .problem-section h2 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .problem-section p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #0088cc 100%);
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0, 175, 255, 0.3);
+        }
+
+        .insight-box h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .insight-box p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .workflow-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .workflow-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .workflow-card.before {
+            border-top: 4px solid #ef4444;
+        }
+
+        .workflow-card.after {
+            border-top: 4px solid var(--success-green);
+        }
+
+        .workflow-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .workflow-card h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .workflow-card.before h3 {
+            color: #ef4444;
+        }
+
+        .workflow-card.after h3 {
+            color: var(--success-green);
+        }
+
+        .workflow-card .subtitle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .workflow-steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .workflow-steps li {
+            counter-increment: step-counter;
+            padding-left: 3rem;
+            margin-bottom: 1.25rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .workflow-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--accent-blue);
+            color: var(--darker);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .code-block {
+            background: var(--darker);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--success-green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9375rem;
+            line-height: 1.8;
+            color: var(--success-green);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-tech {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-tech:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 8px 30px rgba(0, 175, 255, 0.2);
+        }
+
+        .feature-tech .icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-tech h4 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-tech p {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        .stats-bar {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-blue);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .stats-bar h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-item .number {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item .label {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .value-prop {
+            background: var(--darker);
+            padding: 3rem;
+            margin: 4rem 0;
+            border-radius: 4px;
+            border: 2px solid var(--border);
+        }
+
+        .value-prop h2 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .value-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .value-list li {
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--card-bg);
+            border-left: 4px solid var(--success-green);
+            border-radius: 4px;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .value-list li .icon {
+            font-size: 1.5rem;
+            color: var(--success-green);
+            flex-shrink: 0;
+        }
+
+        .value-list li strong {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .conclusion {
+            background: var(--card-bg);
+            padding: 3rem;
+            margin: 4rem 0;
+            border-radius: 4px;
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .conclusion p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .conclusion .signature {
+            text-align: right;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-top: 2rem;
+        }
+
+        .price-tech {
+            background: linear-gradient(135deg, var(--success-green) 0%, #16a34a 100%);
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .price-tech h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-tech .price {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin: 1rem 0;
+        }
+
+        .price-tech p {
+            font-size: 1.125rem;
+            opacity: 0.95;
+        }
+
+        .cta-tech {
+            background: var(--darker);
+            border: 2px solid var(--accent-blue);
+            padding: 4rem 3rem;
+            margin: 4rem 0 5rem;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .cta-tech h2 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-tech p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-tech {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: var(--darker);
+            padding: 1.25rem 3rem;
+            border-radius: 4px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 175, 255, 0.4);
+        }
+
+        .btn-tech:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 175, 255, 0.6);
+        }
+
+        .trial-note {
+            margin-top: 2rem;
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            background: var(--darker);
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .hero { padding: 3rem 0 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .workflow-comparison { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .cta-tech { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <i class="fas fa-code"></i> WORKFLOW OPTIMIZATION • PRO TIP
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">PhotoGlobe Sorter</div>
+            <div class="tag">Tech Review</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-tag">Workflow Analysis</div>
+            <h1>My Photo Workflow Was Broken.<br>It Was Missing <span class="highlight">Step 1</span>.</h1>
+            <p class="hero-meta">Subject: <strong>PhotoGlobe Sorter</strong></p>
+            <p class="hero-author">By: Sébastien (Travel Photographer)</p>
+        </section>
+
+        <div class="problem-section">
+            <h2>The Problem</h2>
+            <p>I have a problem. I love taking photos, but I <strong>hate</strong> the grunt work that comes after.</p>
+            <p>My routine was always the same: I come back from a trip (let's say, Rome) with 800 photos on my SD card. My first reflex? Open Adobe Lightroom. And that's where the drama begins. I import 800 files in bulk. I then have to spend hours manually creating collections, tagging "Rome", "Colosseum", "Vatican"... My catalog becomes an unmanageable monster.</p>
+            <p>Worse, if I want to find a photo 6 months later, I have to remember what I did. It was inefficient and it discouraged me from organizing.</p>
+        </div>
+
+        <div class="insight-box">
+            <h3>The Revelation</h3>
+            <p><strong>Lightroom is made for *editing*, not for *sorting* chaos.</strong></p>
+        </div>
+
+        <section>
+            <h2 style="font-family: 'Roboto Condensed', sans-serif; font-size: 2.25rem; font-weight: 700; text-transform: uppercase; margin: 3rem 0 2rem; text-align: center; letter-spacing: 1px;">Workflow Comparison</h2>
+            
+            <div class="workflow-comparison">
+                <div class="workflow-card before">
+                    <h3>Before</h3>
+                    <p class="subtitle">(Inefficient)</p>
+                    <ol class="workflow-steps">
+                        <li>Transfer 800 photos in bulk to PC</li>
+                        <li>Import 800 photos in bulk into Lightroom</li>
+                        <li>Spend 2 hours tagging and creating collections</li>
+                        <li>Start editing, already exhausted</li>
+                    </ol>
+                </div>
+
+                <div class="workflow-card after">
+                    <h3>After</h3>
+                    <p class="subtitle">(Optimized)</p>
+                    <ol class="workflow-steps">
+                        <li>Transfer 800 photos into single folder: <code>[TO SORT]</code></li>
+                        <li>Launch PhotoGlobe Sorter on this folder</li>
+                        <li>Wait 5 minutes</li>
+                        <li>Software creates perfect structure</li>
+                        <li><strong>Now</strong> import into Lightroom (already sorted)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="code-block">
+.../Italy/Lazio/Rome/ (750 photos)<br>
+.../Vatican City/ (50 photos)
+            </div>
+        </section>
+
+        <div class="stats-bar">
+            <h3>The Impact</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="number">2hrs</div>
+                    <div class="label">Saved Per Trip</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">5min</div>
+                    <div class="label">Processing Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">100%</div>
+                    <div class="label">Automated</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="value-prop">
+            <h2>Not a Gadget. An Ingest Engine.</h2>
+            <ul class="value-list">
+                <li>
+                    <span class="icon">⚡</span>
+                    <div>
+                        <strong>Time is Money:</strong> I paid $39 once to save ~2 hours per trip. Do the math.
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">🔒</span>
+                    <div>
+                        <strong>100% Local:</strong> No cloud, no subscription. My workflow stays on my machine.
+                    </div>
+                </li>
+                <li>
+                    <span class="icon">🎯</span>
+                    <div>
+                        <strong>Does What I Won't:</strong> Sorts Year → Month → Country → City. I'd never have the discipline to do this manually for 68,000 photos.
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-tech">
+                <span class="icon"><i class="fas fa-database"></i></span>
+                <h4>EXIF Analysis</h4>
+                <p>Reads GPS metadata and automatically organizes by geolocation. Zero manual input.</p>
+            </div>
+
+            <div class="feature-tech">
+                <span class="icon"><i class="fas fa-layer-group"></i></span>
+                <h4>Pre-Sorting Layer</h4>
+                <p>Prepares your files before you even open your editor. Clean input = clean workflow.</p>
+            </div>
+
+            <div class="feature-tech">
+                <span class="icon"><i class="fas fa-bolt"></i></span>
+                <h4>Fast Processing</h4>
+                <p>Processes 1,000 photos in ~8 minutes. Set it and forget it.</p>
+            </div>
+        </div>
+
+        <div class="price-tech">
+            <h3>One-Time Investment</h3>
+            <div class="price">$39</div>
+            <p><strong>No subscription. Own it forever. Save hours every trip.</strong></p>
+        </div>
+
+        <div class="conclusion">
+            <p>Don't use Lightroom to do the grunt work. Use a dedicated tool to prep the ground.</p>
+            <p>For me, that's PhotoGlobe Sorter. It made photography fun again by removing the most boring part.</p>
+            <div class="signature">— SÉBASTIEN</div>
+        </div>
+
+        <div class="cta-tech">
+            <h2>Optimize Your Workflow</h2>
+            <p>Stop wasting time on manual sorting. Automate Step 1.</p>
+            <a href="https://www.albumforge.com/photoglobe-sorter/download/" class="btn-tech">
+                <i class="fas fa-download"></i> Download Now
+            </a>
+            <p class="trial-note">✓ Free trial: 500 photos • No credit card • 100% local</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 | 2026 | AlbumForge | PhotoGlobe Sorter. All rights reserved.<br>
+            <a href="https://www.albumforge.com/PhotoGlobe_Sorter">Official Website</a> | 
+            <a href="mailto:support@albumforge.com">Support</a>
+            <a href="index.html">Home</a>
+        </p>
+    </footer>
+</body>
+</html>

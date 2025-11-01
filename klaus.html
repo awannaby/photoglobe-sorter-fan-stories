@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Es ging nicht nur um das Sortieren von Fotos. Es ging darum, die Geschichte meines Vaters zu bewahren.</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+        :root {
+            --forest: #2d5016;
+            --sage: #87a96b;
+            --cream: #faf8f3;
+            --warm-gray: #5a5a5a;
+            --soft-blue: #7ea8be;
+            --gold: #b8956a;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--warm-gray);
+            line-height: 1.9;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 500;
+            color: var(--forest);
+        }
+
+        .memorial-bar {
+            background: var(--forest);
+            color: var(--cream);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.875rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        header {
+            background: var(--white);
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(45, 80, 22, 0.1);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--forest);
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            opacity: 0.6;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            color: var(--forest);
+        }
+
+        .hero-author {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: var(--sage);
+            font-style: italic;
+        }
+
+        .divider {
+            width: 80px;
+            height: 1px;
+            background: var(--sage);
+            margin: 3rem auto;
+            opacity: 0.5;
+        }
+
+        .story-section {
+            background: var(--white);
+            padding: 3rem;
+            margin: 2.5rem 0;
+            border-radius: 2px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+        }
+
+        .story-section h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--forest);
+            line-height: 1.4;
+        }
+
+        .story-section p {
+            font-size: 1.125rem;
+            line-height: 2;
+            margin-bottom: 1.75rem;
+            font-weight: 300;
+        }
+
+        .story-section em {
+            font-style: italic;
+            color: var(--soft-blue);
+        }
+
+        .memory-box {
+            background: linear-gradient(135deg, var(--soft-blue), #6b94aa);
+            color: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 8px 30px rgba(126, 168, 190, 0.3);
+        }
+
+        .memory-box h3 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .memory-box p {
+            font-size: 1.1875rem;
+            line-height: 2;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .treasure-note {
+            background: var(--cream);
+            border-left: 3px solid var(--gold);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            font-style: italic;
+        }
+
+        .treasure-note p {
+            font-size: 1.1875rem;
+            line-height: 2;
+            color: var(--warm-gray);
+            font-weight: 300;
+        }
+
+        .discovery-section {
+            margin: 4rem 0;
+        }
+
+        .discovery-item {
+            background: var(--white);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 2px;
+            border-left: 3px solid var(--sage);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+        }
+
+        .discovery-item:hover {
+            border-left-color: var(--soft-blue);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transform: translateX(8px);
+        }
+
+        .discovery-item h3 {
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 1.25rem;
+            color: var(--forest);
+        }
+
+        .discovery-item p {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .pdf-revelation {
+            background: var(--forest);
+            color: white;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        .pdf-revelation h2 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+        .pdf-revelation p {
+            font-size: 1.1875rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .pdf-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pdf-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 2px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .pdf-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            opacity: 0.9;
+        }
+
+        .pdf-item h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+            color: white;
+        }
+
+        .pdf-item p {
+            font-size: 0.9375rem;
+            line-height: 1.7;
+            opacity: 0.85;
+            margin: 0;
+        }
+
+        .emotional-quote {
+            background: var(--cream);
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            font-style: italic;
+            border-top: 1px solid var(--sage);
+            border-bottom: 1px solid var(--sage);
+        }
+
+        .emotional-quote p {
+            font-size: 1.375rem;
+            line-height: 2;
+            color: var(--forest);
+            font-weight: 300;
+        }
+
+        .meaning-section {
+            background: var(--white);
+            padding: 3.5rem 3rem;
+            margin: 4rem 0;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .meaning-section h2 {
+            font-size: 2.25rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--forest);
+        }
+
+        .meaning-section p {
+            font-size: 1.125rem;
+            line-height: 2;
+            margin-bottom: 1.75rem;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--soft-blue);
+            margin-top: 2.5rem;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .legacy-box {
+            background: linear-gradient(135deg, var(--sage), #77996b);
+            color: white;
+            padding: 3.5rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        .legacy-box h3 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .legacy-box .price {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin: 1.5rem 0;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        .legacy-box p {
+            font-size: 1.125rem;
+            opacity: 0.95;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .cta-gentle {
+            background: var(--white);
+            padding: 4rem 3rem;
+            margin: 4rem 0 5rem;
+            text-align: center;
+            border: 1px solid rgba(45, 80, 22, 0.15);
+            border-radius: 2px;
+        }
+
+        .cta-gentle h2 {
+            font-size: 2.25rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--forest);
+        }
+
+        .cta-gentle p {
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+            color: var(--warm-gray);
+            font-weight: 300;
+        }
+
+        .btn-gentle {
+            display: inline-block;
+            background: var(--forest);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 2px;
+            font-size: 1.0625rem;
+            font-weight: 400;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
+        }
+
+        .btn-gentle:hover {
+            background: var(--sage);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(45, 80, 22, 0.25);
+        }
+
+        .trial-note {
+            margin-top: 2rem;
+            font-size: 0.9375rem;
+            color: var(--sage);
+            font-weight: 300;
+        }
+
+        footer {
+            background: var(--forest);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.875rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        footer a {
+            color: var(--sage);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .hero { padding: 3rem 0 2rem; }
+            .story-section { padding: 2rem; }
+            .pdf-revelation { padding: 3rem 2rem; }
+            .pdf-items { grid-template-columns: 1fr; }
+            .cta-gentle { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="memorial-bar">
+        In Gedenken • Mit Respekt • Für die Ewigkeit
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">PhotoGlobe Sorter</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-icon">🕊️</div>
+            <h1>Es ging nicht nur um das Sortieren von Fotos.<br>Es ging darum, die Geschichte meines Vaters zu bewahren.</h1>
+            <div class="divider"></div>
+            <p class="hero-author">— Klaus, München</p>
+        </section>
+
+        <div class="story-section">
+            <h2>Ein vergiftetes Geschenk</h2>
+            <p>Als Papa uns verließ, hinterließ er mir einen Schatz, der zugleich eine Last war: seine 2-TB-Festplatte. Ich wusste, dass sein Leben dort gespeichert war, aber diese Ordner zu öffnen – das war zu schwer. Jedes Mal, wenn ich auf ein Foto von ihm stieß, brach ich zusammen.</p>
+            <p>30 Jahre digitale Erinnerungen. Tausende Dateien. Durcheinander benannte Ordner. <em>Ich wusste nicht, wo ich anfangen sollte.</em></p>
+        </div>
+
+        <div class="treasure-note">
+            <p>"Seine Kamera, sein altes Canon EOS, stand noch auf dem Regal. Die Festplatte lag daneben. Beides fühlte sich heilig an. Aber ich konnte es nicht alleine bewältigen."</p>
+        </div>
+
+        <div class="story-section">
+            <h2>Die Entscheidung</h2>
+            <p>Ich kaufte PhotoGlobe Sorter, ohne wirklich daran zu glauben. Ich sagte mir: <em>"Vielleicht macht es den ersten Schritt für mich."</em></p>
+            <p>Ich startete das Programm. Ich wählte die Festplatte aus. Ich klickte auf "Start"... und ließ es laufen.</p>
+            <p>Am nächsten Morgen war alles sortiert. Nach Jahr. Nach Monat. Nach Ort. Seine Lebensgeschichte, endlich geordnet.</p>
+        </div>
+
+        <div class="memory-box">
+            <h3>Der Moment der Offenbarung</h3>
+            <p>Aber das Wichtigste war der PDF-Bericht.</p>
+            <p>Was ich dort sah, bewegte mich zutiefst.</p>
+        </div>
+
+        <div class="discovery-section">
+            <div class="discovery-item">
+                <h3>📷 Seine Kamera</h3>
+                <p>Die "Verteilung nach Kamera" zeigte mir sein geliebtes <em>Canon EOS 5D</em>, mit dem er 20 Jahre lang fotografiert hatte. Es war, als würde ich seine Hand wieder auf der Kamera spüren.</p>
+            </div>
+
+            <div class="discovery-item">
+                <h3>🗺️ Seine Reisen</h3>
+                <p>Die Heatmap war keine einfache "Reisekarte" – es war die Karte seines Lebens. Südfrankreich, wo er aufwuchs. Japan, seine große Liebe. Italien, wo wir jeden Sommer verbrachten.</p>
+            </div>
+
+            <div class="discovery-item">
+                <h3>📅 Seine Momente</h3>
+                <p>Die Zeitachse zeigte mir, wann er am meisten fotografierte. August – unsere Familienurlaube. Dezember – die Weihnachtsfeste. Jedes Jahr, dieselbe Liebe zum Detail.</p>
+            </div>
+        </div>
+
+        <div class="pdf-revelation">
+            <h2>Das war nicht nur ein Bericht</h2>
+            <p>Es war ein Vermächtnis. Eine Chronik. Ein stilles Zeugnis seines Lebens.</p>
+            
+            <div class="pdf-items">
+                <div class="pdf-item">
+                    <span class="icon">🏔️</span>
+                    <h4>Die Orte</h4>
+                    <p>Jeder Ort, den er liebte, kartiert und bewahrt</p>
+                </div>
+                <div class="pdf-item">
+                    <span class="icon">⏰</span>
+                    <h4>Die Jahre</h4>
+                    <p>Drei Jahrzehnte seiner Reisen, visualisiert</p>
+                </div>
+                <div class="pdf-item">
+                    <span class="icon">❤️</span>
+                    <h4>Die Momente</h4>
+                    <p>Seine Leidenschaften, in Daten übersetzt</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="emotional-quote">
+            <p>"Ich weinte. Aber es waren gute Tränen. Tränen der Dankbarkeit, dass ich seine Geschichte jetzt erzählen kann."</p>
+        </div>
+
+        <div class="meaning-section">
+            <h2>Was dieses Programm wirklich getan hat</h2>
+            <p>Es hat keine Dateien sortiert. Es hat mir geholfen, meinen Vater zu ehren.</p>
+            <p>Es hat das Chaos seines Lebens in eine Geschichte verwandelt, die ich jetzt mit meinen Kindern teilen kann.</p>
+            <p><strong>Es hat mir erlaubt, in Frieden Abschied zu nehmen.</strong></p>
+            <div class="signature">— Klaus</div>
+        </div>
+
+        <div class="legacy-box">
+            <h3>Der Preis für Würde</h3>
+            <div class="price">39 €</div>
+            <p>Einmal bezahlt. Für immer behalten. Erinnerungen bewahren.</p>
+        </div>
+
+        <div class="cta-gentle">
+            <h2>Bewahren Sie Ihre Erinnerungen</h2>
+            <p>Ob für sich selbst oder für einen geliebten Menschen – jede Geschichte verdient es, bewahrt zu werden.</p>
+            <a href="https://www.albumforge.com/photoglobe-sorter/download/" class="btn-gentle">
+                Jetzt herunterladen
+            </a>
+            <p class="trial-note">✨ Kostenlose Testversion: 500 Fotos • Keine Kreditkarte erforderlich</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AlbumForge | PhotoGlobe Sorter. Alle Rechte vorbehalten.<br>
+            <a href="https://www.albumforge.com/PhotoGlobe_Sorter">Offizielle Website</a> | 
+            <a href="mailto:support@albumforge.com">Support</a>
+            <a href="index.html">Home</a>
+        </p>
+    </footer>
+</body>
+</html>

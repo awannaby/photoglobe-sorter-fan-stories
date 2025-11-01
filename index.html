@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoGlobe Sorter : Histoires de Fans & Témoignages</title>
+    <meta name="description" content="Un projet communautaire transparent et bienveillant explorant 8 histoires d'utilisateurs de PhotoGlobe Sorter.">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-green: #3A5A40;
+            --eco-green: #588157;
+            --off-white: #FBFBFB;
+            --text-dark: #333333;
+            --card-border: #EAEAEA;
+            --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--off-white);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            color: var(--deep-green);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            background: var(--white);
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--card-border);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header .subtitle {
+            font-size: 1.125rem;
+            color: var(--eco-green);
+            font-weight: 400;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: var(--eco-green);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0 4rem;
+        }
+
+        .story-card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--eco-green);
+        }
+
+        .story-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .story-card .persona-title {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--eco-green);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .story-card .quote {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 2rem;
+            font-style: italic;
+            flex-grow: 1;
+        }
+
+        .story-card .button {
+            display: inline-block;
+            background: var(--deep-green);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .story-card:hover .button {
+            background: var(--eco-green);
+        }
+
+        footer {
+            background: var(--deep-green);
+            color: var(--off-white);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        footer a {
+            color: white;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .hero { padding: 3rem 1rem; }
+            .story-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>PhotoGlobe Sorter</h1>
+            <div class="subtitle">Histoires de Fans & Témoignages Communautaires</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="badge">Projet Fan Non-Officiel</div>
+            <h2>8 Histoires. 8 Émotions. 1 Outil.</h2>
+            <p>
+                Ce site est une collection d'histoires d'utilisateurs passionnés. C'est une exploration <strong>transparente et bienveillante</strong> de ce qui rend le logiciel <a href="https://www.albumforge.com/photoglobe-sorter/" target="_blank" rel="noopener">PhotoGlobe Sorter</a> si spécial.
+            </p>
+            <p>
+                Chaque histoire explore une motivation différente : du soulagement familial à la rébellion contre les GAFAM, du deuil à la recherche d'un modèle économique plus éthique.
+            </p>
+        </section>
+
+        <section class="story-grid">
+            
+            <a class="story-card" href="alex.html">
+                <h3>Alex</h3>
+                <div class="persona-title">L'Admiration Technique</div>
+                <p class="quote">
+                    "Un véritable exploit. Le logiciel gère 1656 combinaisons de tri et les noms de dossiers en japonais (UTF-8) sans une seule erreur. C'est du travail de pro."
+                </p>
+                <span class="button">Lire l'histoire d'Alex</span>
+            </a>
+
+            <a class="story-card" href="miuky.html">
+                <h3>Miuky</h3>
+                <div class="persona-title">L'Esthète "Zen"</div>
+                <p class="quote">
+                    "Ce n'est pas juste un outil, c'est une philosophie. Il respecte ma culture en créant des dossiers <code>.../京都</code> (Kyoto) parfaitement. Il a ramené le 'Zen' dans mon chaos numérique."
+                </p>
+                <span class="button">Lire l'histoire de Miuky</span>
+            </a>
+
+            <a class="story-card" href="marc-sophie.html">
+                <h3>Marc & Sophie</h3>
+                <div class="persona-title">Le Soulagement Familial</div>
+                <p class="quote">
+                    "Nous étions noyés sous 68 000 photos. C'était 'imbitable'. En une nuit, ce logiciel a trié 20 ans de souvenirs. Pour 39€ à vie, c'est un miracle."
+                </p>
+                <span class="button">Lire l'histoire de la famille</span>
+            </a>
+
+            <a class="story-card" href="david.html">
+                <h3>David</h3>
+                <div class="persona-title">La Rébellion & la Liberté</div>
+                <p class="quote">
+                    "J'ai quitté Google Photos. Je ne serai plus le produit. Ce logiciel est ma déclaration d'indépendance. 100% offline. Le prix de 39€, c'est le 'Coût de la Liberté'."
+                </p>
+                <span class="button">Lire l'histoire de David</span>
+            </a>
+
+            <a class="story-card" href="klaus.html">
+                <h3>Klaus</h3>
+                <div class="persona-title">Le Devoir de Mémoire</div>
+                <p class="quote">
+                    "Il ne s'agissait pas de trier. Il s'agissait d'honorer mon père. Le rapport PDF a transformé le chaos de son disque dur en l'histoire de sa vie."
+                </p>
+                <span class="button">Lire l'histoire de Klaus</span>
+            </a>
+
+            <a class="story-card" href="sebastien.html">
+                <h3>Sébastien</h3>
+                <div class="persona-title">L'Optimisation du Workflow</div>
+                <p class="quote">
+                    "Mon workflow était nul. C'est 'l'Étape 1' parfaite. Il pré-trie mes photos par pays/ville *avant* que je n'ouvre Lightroom. Un gain de temps incroyable."
+                </p>
+                <span class="button">Lire l'histoire de Sébastien</span>
+            </a>
+
+            <a class="story-card" href="claire.html">
+                <h3>Claire</h3>
+                <div class="persona-title">L'Achat Éthique</div>
+                <p class="quote">
+                    "J'ai acheté avant d'essayer. Pourquoi ? Pas d'abonnement, et 1 licence offerte à une ONG pour chaque achat. J'ai voté avec mon portefeuille."
+                </p>
+                <span class="button">Lire l'histoire de Claire</span>
+            </a>
+
+            <a class="story-card" href="maria.html">
+                <h3>Maria (ONG)</h3>
+                <div class="persona-title">La Gratitude (Bénéficiaire)</div>
+                <p class="quote">
+                    "Grâce à un donateur anonyme, notre ONG a reçu une licence gratuite. Nous protégeons nos données et montrons notre impact à nos donateurs avec les rapports PDF."
+                </p>
+                <span class="button">Lire l'histoire de Maria</span>
+            </a>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Disclaimer :</strong> Ceci est un projet fan non-officiel, créé à des fins d'illustration et d'analyse. Il n'est pas affilié à AlbumForge ou PhotoGlobe Sorter.</p>
+            <p>Toutes les informations sur le produit sont basées sur les données publiquement disponibles sur le <a href="https://www.albumforge.com/photoglobe-sorter/download/" target="_blank" rel="noopener">site officiel de PhotoGlobe Sorter</a>. Ce projet est un hommage à leur approche transparente, éthique et respectueuse de l'utilisateur.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Quit Google Photos and Took Back My Memories | A Privacy Story</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@300;400;600;700;900&display=swap');
+
+        :root {
+            --red: #dc2626;
+            --dark: #0f172a;
+            --slate: #334155;
+            --blue: #2563eb;
+            --green: #16a34a;
+            --gray: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .alert-bar {
+            background: var(--red);
+            color: white;
+            text-align: center;
+            padding: 0.75rem;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            letter-spacing: 0.5px;
+        }
+
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem 0;
+            border-bottom: 3px solid var(--red);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .badge {
+            background: var(--red);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--slate) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🔓';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: -80px;
+            right: -50px;
+        }
+
+        .hero-tag {
+            background: var(--red);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-author {
+            font-size: 1.125rem;
+            font-weight: 600;
+            opacity: 0.8;
+        }
+
+        .manifesto {
+            background: var(--gray);
+            padding: 3rem;
+            margin: 3rem 0;
+            border-left: 6px solid var(--red);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .manifesto h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .manifesto p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: var(--slate);
+        }
+
+        .manifesto strong {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        .truth-bomb {
+            background: var(--red);
+            color: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.3);
+        }
+
+        .truth-bomb h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .truth-bomb p {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            margin: 4rem 0;
+        }
+
+        .timeline-item {
+            background: white;
+            border: 2px solid var(--gray);
+            border-left: 4px solid var(--blue);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            border-left-color: var(--red);
+            box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+            transform: translateX(8px);
+        }
+
+        .timeline-number {
+            position: absolute;
+            left: -35px;
+            top: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: var(--dark);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .timeline-item p {
+            font-size: 1.0625rem;
+            line-height: 1.8;
+            color: var(--slate);
+        }
+
+        .freedom-section {
+            background: linear-gradient(135deg, var(--green) 0%, #15803d 100%);
+            color: white;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .freedom-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .freedom-section p {
+            font-size: 1.25rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .features-rebel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-rebel {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid var(--gray);
+            transition: all 0.3s;
+        }
+
+        .feature-rebel:hover {
+            border-color: var(--red);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .feature-rebel .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-rebel h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .feature-rebel p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--slate);
+        }
+
+        .price-freedom {
+            background: var(--dark);
+            color: white;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 8px;
+            border: 3px solid var(--red);
+        }
+
+        .price-freedom h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .price-freedom .price {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--red);
+            margin: 1rem 0;
+        }
+
+        .price-freedom p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .declaration {
+            background: var(--gray);
+            padding: 3rem;
+            margin: 4rem 0;
+            border-top: 4px solid var(--red);
+            border-bottom: 4px solid var(--red);
+        }
+
+        .declaration h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .declaration p {
+            font-size: 1.1875rem;
+            line-height: 1.9;
+            color: var(--slate);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .declaration .signature {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red);
+            text-align: right;
+            margin-top: 2rem;
+        }
+
+        .cta-rebel {
+            background: linear-gradient(135deg, var(--red) 0%, #b91c1c 100%);
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .cta-rebel h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .cta-rebel p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-rebel {
+            display: inline-block;
+            background: white;
+            color: var(--red);
+            padding: 1.5rem 3.5rem;
+            border-radius: 6px;
+            font-size: 1.25rem;
+            font-weight: 900;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .btn-rebel:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+        }
+
+        .trial-info {
+            margin-top: 2rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            border-top: 3px solid var(--red);
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        footer a {
+            color: var(--red);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .hero { padding: 3rem 0; }
+            .hero h1 { font-size: 2.5rem; }
+            .manifesto { padding: 2rem; }
+            .timeline-number { display: none; }
+            .timeline-item { padding-left: 1.5rem; }
+            .features-rebel { grid-template-columns: 1fr; }
+            .cta-rebel { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-bar">
+        ⚠️ YOUR DATA IS NOT THE PRODUCT • TAKE BACK CONTROL
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">PhotoGlobe Sorter</div>
+            <div class="badge">Privacy Manifesto</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-tag">A True Story</div>
+            <h1>How I Quit Google Photos<br>and Took Back My Memories</h1>
+            <p class="hero-subtitle">One man's journey from product to owner</p>
+            <p class="hero-author">— David, 40, California</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="manifesto">
+            <h2>The Wake-Up Call</h2>
+            <p>For 10 years, I gave Google everything. Every photo of my kids, every vacation, every embarrassing moment. And why? So an AI could "suggest" memories to me? No. So my data could become their product.</p>
+            <p><strong>I said STOP.</strong></p>
+            <p>I spent a week downloading my 80,000 photos via Google Takeout. It was chaos. Then I bought PhotoGlobe Sorter. This isn't just software—<strong>it's a declaration of independence</strong>.</p>
+        </div>
+
+        <div class="truth-bomb">
+            <h3>The Hard Truth</h3>
+            <p><strong>If you're not paying for the product, YOU are the product.</strong></p>
+            <p>Every photo you upload. Every face it recognizes. Every location it maps.</p>
+            <p>That's not a service. That's surveillance.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-number">1</div>
+                <h3>The Realization</h3>
+                <p>I realized Google was using my family photos to train AI. My kids' faces, my home, my travels—all feeding their algorithms. I felt sick.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-number">2</div>
+                <h3>The Escape Plan</h3>
+                <p>I used Google Takeout to download everything. 80,000 photos. The files were a disaster—random names, broken folders, metadata stripped. But they were mine again.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-number">3</div>
+                <h3>The Discovery</h3>
+                <p>I found PhotoGlobe Sorter. $39 once. No subscription. No cloud. No tracking. It lives on MY computer, talks to nobody, sorts everything locally. This was exactly what I needed.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-number">4</div>
+                <h3>The Liberation</h3>
+                <p>I let it run overnight. The next morning, 80,000 photos were organized by year, month, and location. Everything sorted. Everything private. Everything MINE.</p>
+            </div>
+        </div>
+
+        <div class="freedom-section">
+            <h2>What Freedom Looks Like</h2>
+            <p>My photos live on MY hard drive. Nobody scans them. Nobody uses them. Nobody sells them.</p>
+            <p><strong>For the first time in 10 years, I actually own my memories.</strong></p>
+        </div>
+
+        <div class="features-rebel">
+            <div class="feature-rebel">
+                <span class="icon">🔒</span>
+                <h4>100% Offline</h4>
+                <p>Your photos never touch the internet. No cloud. No servers. No data mining. Period.</p>
+            </div>
+
+            <div class="feature-rebel">
+                <span class="icon">💰</span>
+                <h4>You're Not The Product</h4>
+                <p>$39 once. That's it. No monthly fees extracting value from your life forever.</p>
+            </div>
+
+            <div class="feature-rebel">
+                <span class="icon">🛡️</span>
+                <h4>Your Data, Your Rules</h4>
+                <p>Even for maps, it asks YOU to get your own API key. They don't want to see your data. That's integrity.</p>
+            </div>
+
+            <div class="feature-rebel">
+                <span class="icon">🎯</span>
+                <h4>No Surveillance</h4>
+                <p>No face recognition training. No location tracking. No behavioral analysis. Just organizing.</p>
+            </div>
+        </div>
+
+        <div class="price-freedom">
+            <h3>The Cost of Freedom</h3>
+            <div class="price">$39</div>
+            <p><strong>One payment. Own it forever. Never be the product again.</strong></p>
+        </div>
+
+        <div class="declaration">
+            <h2>This Is My Declaration</h2>
+            <p>I refuse to let my family's memories be used as training data.</p>
+            <p>I refuse to pay monthly subscriptions for what should be mine.</p>
+            <p>I refuse to be the product anymore.</p>
+            <p><strong>PhotoGlobe Sorter gave me my digital independence back. Best $39 I ever spent.</strong></p>
+            <div class="signature">— David</div>
+        </div>
+
+        <div class="cta-rebel">
+            <h2>Ready to Take Back Control?</h2>
+            <p>Stop being the product. Own your memories again.</p>
+            <a href="https://www.albumforge.com/photoglobe-sorter/download/" class="btn-rebel">
+                Download Now
+            </a>
+            <p class="trial-info">✓ Free trial: 500 photos • No credit card • No tracking</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AlbumForge | PhotoGlobe Sorter. All rights reserved.<br>
+            <a href="https://www.albumforge.com/PhotoGlobe_Sorter">Official Website</a> | 
+            <a href="mailto:support@albumforge.com">Support</a>
+            <a href="index.html">Home</a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How a Free License Helped Us Tell Our Story to the World | Smiles for Children NGO</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;600;700&display=swap');
+
+        :root {
+            --hope-blue: #4A90E2;
+            --warm-orange: #F5A623;
+            --earth-brown: #8B7355;
+            --soft-cream: #FFF9F0;
+            --text-dark: #3C3C3C;
+            --gentle-gray: #7D7D7D;
+            --heart-red: #E74C3C;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--soft-cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .solidarity-bar {
+            background: linear-gradient(135deg, var(--hope-blue) 0%, #3a7bc8 100%);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .solidarity-bar i {
+            margin-right: 0.5rem;
+        }
+
+        header {
+            background: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--hope-blue);
+        }
+
+        .ngo-badge {
+            background: var(--warm-orange);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--warm-orange);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gentle-gray);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .hero-org {
+            display: inline-block;
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-weight: 600;
+            color: var(--hope-blue);
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: var(--warm-orange);
+            margin: 3rem auto;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--hope-blue);
+        }
+
+        .mission-card h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--hope-blue);
+        }
+
+        .mission-card p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-card em {
+            font-style: italic;
+            color: var(--warm-orange);
+        }
+
+        .challenge-section {
+            background: linear-gradient(135deg, var(--earth-brown) 0%, #7a6549 100%);
+            color: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .challenge-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .challenge-section p {
+            font-size: 1.1875rem;
+            line-height: 1.9;
+            opacity: 0.95;
+            margin-bottom: 1.25rem;
+        }
+
+        .challenge-list {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .challenge-list ul {
+            list-style: none;
+        }
+
+        .challenge-list li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.0625rem;
+        }
+
+        .challenge-list li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--heart-red);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .discovery-moment {
+            background: white;
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--warm-orange);
+        }
+
+        .discovery-moment h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--warm-orange);
+        }
+
+        .discovery-moment p {
+            font-size: 1.125rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .solidarity-highlight {
+            background: linear-gradient(135deg, var(--hope-blue) 0%, #3a7bc8 100%);
+            color: white;
+            padding: 3.5rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(74, 144, 226, 0.3);
+        }
+
+        .solidarity-highlight h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .solidarity-highlight .highlight-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .solidarity-highlight .highlight-box p {
+            font-size: 1.375rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .solidarity-highlight .price {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-bottom-color: var(--hope-blue);
+        }
+
+        .impact-card .icon {
+            font-size: 3rem;
+            color: var(--warm-orange);
+            margin-bottom: 1.25rem;
+        }
+
+        .impact-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .impact-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--gentle-gray);
+        }
+
+        .testimonial {
+            background: var(--soft-cream);
+            border-left: 4px solid var(--hope-blue);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            font-style: italic;
+        }
+
+        .testimonial p {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial .author {
+            text-align: right;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--hope-blue);
+            font-size: 1.125rem;
+        }
+
+        .gratitude-section {
+            background: white;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+        }
+
+        .gratitude-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .gratitude-section p {
+            font-size: 1.1875rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            color: var(--gentle-gray);
+        }
+
+        .gratitude-section .heart {
+            font-size: 3rem;
+            color: var(--heart-red);
+            margin: 2rem 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .values-section {
+            background: linear-gradient(135deg, var(--warm-orange) 0%, #e09619 100%);
+            color: white;
+            padding: 3.5rem 3rem;
+            margin: 4rem 0;
+            border-radius: 8px;
+        }
+
+        .values-section h2 {
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .value-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-item h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+
+        .value-item p {
+            font-size: 0.9375rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .cta-solidarity {
+            background: white;
+            border: 3px solid var(--hope-blue);
+            padding: 4rem 3rem;
+            margin: 4rem 0 5rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .cta-solidarity h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--hope-blue);
+        }
+
+        .cta-solidarity p {
+            font-size: 1.125rem;
+            color: var(--gentle-gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-solidarity .info-box {
+            background: var(--soft-cream);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--warm-orange);
+        }
+
+        .cta-solidarity .info-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--warm-orange);
+        }
+
+        .cta-solidarity .info-box p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+
+        .btn-solidarity {
+            display: inline-block;
+            background: var(--hope-blue);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+            margin-top: 1rem;
+        }
+
+        .btn-solidarity:hover {
+            background: #3a7bc8;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: var(--warm-orange);
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(245, 166, 35, 0.3);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: #e09619;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(245, 166, 35, 0.4);
+        }
+
+        footer {
+            background: var(--hope-blue);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        footer a {
+            color: var(--warm-orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .hero { padding: 3rem 0 2rem; }
+            .mission-card { padding: 2rem; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr; }
+            .btn-secondary { margin-left: 0; margin-top: 1rem; }
+            .header-content { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="solidarity-bar">
+        <i class="fas fa-hands-helping"></i> Solidarity License Program • Empowering NGOs Worldwide
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">PhotoGlobe Sorter</div>
+            <div class="ngo-badge">NGO Story</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-icon">🌍</div>
+            <h1>How a Free License Helped Us Tell Our Story to the World</h1>
+            <p class="hero-subtitle">A testimony of impact, transparency, and gratitude</p>
+            <div class="hero-org">Smiles for Children • International NGO</div>
+        </section>
+
+        <div class="divider"></div>
+
+        <div class="mission-card">
+            <h2>Our Mission</h2>
+            <p>We are <strong>Smiles for Children</strong>, a small humanitarian organization working in rural communities across Southeast Asia and West Africa. For the past 12 years, we've been building schools, providing clean water, and bringing healthcare to children who need it most.</p>
+            <p>Every mission we undertake is <em>documented through photography</em>. Not for us—but for our donors, for transparency, and for the children whose stories deserve to be told with dignity.</p>
+        </div>
+
+        <div class="challenge-section">
+            <h2>Our Challenge</h2>
+            <p>We had over 40,000 photos from our field missions. Photos of smiling children at new schools. Wells being built. Medical camps saving lives.</p>
+            <p><strong>But we had a problem.</strong></p>
+            <div class="challenge-list">
+                <ul>
+                    <li>Our budget was tight. Every dollar goes to the field, not to software.</li>
+                    <li>We couldn't afford monthly subscriptions for photo management.</li>
+                    <li>Cloud services felt unsafe for our beneficiaries' photos.</li>
+                    <li>Our volunteers struggled to organize thousands of files manually.</li>
+                    <li>Donors asked: "Can you show us where exactly our funds went?"</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="discovery-moment">
+            <h2>The Discovery That Changed Everything</h2>
+            <p>One of our volunteers, Sarah, found PhotoGlobe Sorter online. She read about something called the <strong>"Solidarity License"</strong>.</p>
+            <p>She sent us this message:</p>
+            <blockquote style="font-style: italic; padding: 1rem 0; color: var(--gentle-gray);">
+                "There's a company that gives free lifetime licenses to NGOs. For every license someone buys, they donate one to organizations like us. It's called AlbumForge. Should we apply?"
+            </blockquote>
+            <p>We didn't believe it at first. Free professional software? For life? No strings attached?</p>
+        </div>
+
+        <div class="solidarity-highlight">
+            <h2>We Applied. We Received.</h2>
+            <div class="highlight-box">
+                <p>Within 48 hours, we received our <strong>Solidarity License</strong>.</p>
+                <div class="price">$0</div>
+                <p>Zero cost. Full features. Forever.</p>
+            </div>
+            <p style="margin-top: 2rem; font-size: 1.125rem; opacity: 0.95;">Someone, somewhere, bought a license. And because of their purchase, we received ours for free. We don't know who they are, but we're grateful every single day.</p>
+        </div>
+
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="icon">📸</div>
+                <h3>40,000 Photos Organized</h3>
+                <p>12 years of missions, automatically sorted by country, year, and project location.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="icon">🗺️</div>
+                <h3>Transparency Maps</h3>
+                <p>Heat maps showing exactly where we work. Donors can see the geographic impact.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="icon">📊</div>
+                <h3>Professional Reports</h3>
+                <p>PDF reports with stats and maps that we share with sponsors and grant committees.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="icon">🔒</div>
+                <h3>Privacy Protected</h3>
+                <p>100% offline. Our beneficiaries' photos never touch the cloud. Their dignity is preserved.</p>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <p>"This software didn't just organize our photos. It helped us tell our story with credibility. When we apply for grants, we show them the geographic heatmap of our work. When donors ask for transparency, we send them the PDF report. It transformed how we communicate our impact."</p>
+            <div class="author">— Maria Rodriguez, Executive Director, Smiles for Children</div>
+        </div>
+
+        <div class="values-section">
+            <h2>Why This Matters</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="icon">💚</div>
+                    <h4>Empowerment</h4>
+                    <p>Small NGOs deserve professional tools, not just corporate giants.</p>
+                </div>
+                <div class="value-item">
+                    <div class="icon">🤝</div>
+                    <h4>Solidarity</h4>
+                    <p>Every purchase helps an organization like ours. That's beautiful.</p>
+                </div>
+                <div class="value-item">
+                    <div class="icon">🌟</div>
+                    <h4>Dignity</h4>
+                    <p>We can document our work with the same quality as any professional org.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gratitude-section">
+            <h2>To Whoever Bought a License That Gave Us Ours</h2>
+            <div class="heart">❤️</div>
+            <p>We don't know your name. We'll never meet you. But because of your purchase, we received our license for free.</p>
+            <p>Your $39 didn't just buy you software. It helped us organize 40,000 photos of children smiling, schools being built, and lives being changed.</p>
+            <p><strong>Thank you. From the bottom of our hearts. Thank you.</strong></p>
+        </div>
+
+        <div class="cta-solidarity">
+            <h2>Join the Solidarity Movement</h2>
+            <p>When you purchase PhotoGlobe Sorter, you're not just solving your own photo chaos.</p>
+            <p><strong>You're giving a free license to an NGO or humanitarian organization.</strong></p>
+            
+            <div class="info-box">
+                <h3>How the Solidarity License Works</h3>
+                <p><strong>1. You buy:</strong> Purchase a lifetime license for $39</p>
+                <p><strong>2. We give:</strong> AlbumForge donates one free license to a verified NGO</p>
+                <p><strong>3. Impact multiplies:</strong> Your purchase helps organizations document their life-changing work</p>
+            </div>
+
+            <div>
+                <a href="https://www.albumforge.com/photoglobe-sorter/download/" class="btn-solidarity">
+                    <i class="fas fa-download"></i> Buy & Give Back
+                </a>
+                <a href="https://www.albumforge.com/photoglobe-sorter/download/" class="btn-secondary">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </a>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 0.9375rem; color: var(--gentle-gray);">
+                <i class="fas fa-heart" style="color: var(--heart-red);"></i> Every purchase = One free license to an NGO
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AlbumForge | PhotoGlobe Sorter • Solidarity License Program<br>
+            <a href="https://www.albumforge.com/PhotoGlobe_Sorter">Official Website</a> | 
+            <a href="mailto:support@albumforge.com">Support</a>
+            <a href="index.html">Home</a>
+        </p>
+    </footer>
+</body>
+</html>
